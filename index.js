@@ -8,7 +8,17 @@ const app = express();
 
 const conn = require("./db/conn");
 
-app.engine("handlebars", exphbs());
+// Models
+const Tought = require("./models/Tought");
+
+// routes
+const toughtsRoutes = require("./routes/toughtsRoutes");
+const authRoutes = require("./routes/authRoutes");
+const ToughController = require("./controllers/ToughtController");
+
+const hbs = exphbs.create();
+
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 app.use(
